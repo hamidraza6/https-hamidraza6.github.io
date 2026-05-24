@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio | Hamid Raza</title>
+    <meta name="description" content="Data Scientist portfolio showcasing machine learning, data analysis, and predictive modeling projects.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0a0f1c; /* Deep navy/charcoal */
+            --bg-card: rgba(19, 27, 47, 0.7);
+            --accent: #00f0ff; /* Electric blue/cyan */
+            --accent-dark: #0088ff;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-heading: 'Chakra Petch', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(0, 136, 255, 0.04) 0%, transparent 50%);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        /* Layout & Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        /* Utilities */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-main);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 15, 28, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            padding-bottom: 40px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin-top: 2rem;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 35%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero p.greeting {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero .bio {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--accent);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 240, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 240, 255, 0.1);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.05);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: rgba(0, 240, 255, 0.2);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-main);
+            border: 4px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.right::after {
+            left: -8px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-text {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .social-icon:hover {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent);
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item.left, .timeline-item.right {
+                left: 0;
+            }
+            .timeline-item::after {
+                left: 23px;
+            }
+            .timeline-item.right::after {
+                left: 23px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">DS<span class="gradient-text">.</span>PORTFOLIO</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content hidden">
+                <img src="Screenshot 2026-04-16 013926.png" alt="Hamid Raza" class="profile-img">
+                <p class="greeting">WELCOME TO MY PORTFOLIO</p>
+                <h1>I'm <span class="gradient-text">Hamid Raza</span></h1>
+                <h2>AI Student & Data Scientist</h2>
+                <p class="bio">
+                    Transforming raw data into actionable insights and intelligent systems. Based in Pakistan, specializing in predictive modeling, machine learning, and data visualization.
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="resume.html" class="btn btn-outline" target="_blank"><i class="fas fa-download"></i> Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title hidden">About <span class="gradient-text">Me</span></h2>
+            <div class="about-content hidden">
+                <div class="about-text">
+                    <p>
+                        I am a passionate Data Scientist and AI Student with a strong foundation in statistics, programming, and business analytics. I love solving complex problems by extracting hidden patterns from messy datasets and building predictive models that drive decision-making.
+                    </p>
+                    <p>
+                        Whether it's deploying a machine learning pipeline or designing an interactive dashboard, I focus on delivering scalable, data-driven solutions with a strong visual impact.
+                    </p>
+                </div>
+                <div class="about-skills">
+                    <div class="skills-container">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Data Collection</span>
+                        <span class="skill-tag">Data Cleaning</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">EDA</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Google Colab</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title hidden">Featured <span class="gradient-text">Projects</span></h2>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card hidden">
+                    <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="project-title">Product Sales Dashboard 2026</h3>
+                    <p class="project-desc">
+                        A comprehensive dashboard designed to analyze and visualize product sales data, enabling data-driven business decisions and revenue tracking.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool">Power BI</span>
+                        <span class="tool">Excel</span>
+                        <span class="tool">Data Visualization</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/hamidraza6/Product-Sales-Dashboard-2026" title="GitHub Repository" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card hidden">
+                    <div class="project-icon"><i class="fas fa-university"></i></div>
+                    <h3 class="project-title">Bank Performance Dashboard</h3>
+                    <p class="project-desc">
+                        An interactive dashboard visualizing key banking performance indicators, branch analytics, and customer metrics to assess overall financial health.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool">Power BI</span>
+                        <span class="tool">SQL</span>
+                        <span class="tool">Data Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/hamidraza6/Bank-Performance-Dashborad" title="GitHub Repository" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card hidden">
+                    <div class="project-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="project-title">Bank Queue Management System</h3>
+                    <p class="project-desc">
+                        A Python-based system designed to efficiently manage and track customer queues in a banking environment, reducing wait times and improving service.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool">Python</span>
+                        <span class="tool">Data Structures</span>
+                        <span class="tool">Algorithms</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/hamidraza6/Bank-Queue-Management-System" title="GitHub Repository" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card hidden">
+                    <div class="project-icon"><i class="fas fa-book"></i></div>
+                    <h3 class="project-title">Multi-page Book Scraper</h3>
+                    <p class="project-desc">
+                        Multi-page web scraping project using Python, Requests, BeautifulSoup, and Pandas to automatically extract and compile book data.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool">Python</span>
+                        <span class="tool">BeautifulSoup</span>
+                        <span class="tool">Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/hamidraza6/Multi-page-book-scraper" title="GitHub Repository" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card hidden">
+                    <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3 class="project-title">Retail Sales Performance Dashboard</h3>
+                    <p class="project-desc">
+                        A dynamic dashboard for tracking and analyzing retail sales metrics, providing actionable insights into store performance and product trends.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool">Power BI</span>
+                        <span class="tool">SQL</span>
+                        <span class="tool">Data Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/hamidraza6/Retail-Sales-Performance-Dashboard." title="GitHub Repository" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience/Education Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title hidden">Journey & <span class="gradient-text">Education</span></h2>
+            
+            <div class="timeline">
+                
+                <div class="timeline-item left hidden">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024 - 2028</div>
+                        <h3 class="timeline-title">BS Artificial Intelligence</h3>
+                        <div class="timeline-subtitle">Quaid-e-Awam University of Engineering Science and Technology, Nawabshah, Sindh, Pakistan</div>
+                        <p>Focusing on machine learning, deep learning, algorithms, and building intelligent systems.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right hidden">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026 - Present</div>
+                        <h3 class="timeline-title">Data Analyst</h3>
+                        <div class="timeline-subtitle">Fiverr</div>
+                        <p>Providing data cleaning, exploratory analysis, and custom dashboard creation for small businesses to help them understand their metrics.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container hidden">
+            <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+            <p class="contact-text">
+                I'm currently seeking an internship role as a Data Scientist where I can apply my skills in a real-world environment. Whether you have an opportunity, a project idea, or just want to say hi, I'd love to hear from you!
+            </p>
+            
+            <div class="social-links">
+                <a href="mailto:hamidraza71450@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/hamid-raza-data-scientist" class="social-icon" title="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/hamidraza6?tab=repositories" class="social-icon" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.kaggle.com/raza163" class="social-icon" title="Kaggle" target="_blank"><i class="fab fa-kaggle"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Hamid Raza. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Optional: stop observing once shown
+                }
+            });
+        }, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

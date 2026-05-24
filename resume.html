@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Hamid Raza — Resume</title> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', 'Arial', sans-serif;
+            background: #e8ecf0;
+            color: #1a1a1a;
+            padding: 2rem 1rem;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            max-width: 760px;
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 20px;
+            background: #fff;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { background: #f5f5f5; }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 20px;
+            background: #1a3a5c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .print-btn:hover { background: #0f2a45; }
+
+        /* Resume Paper */
+        .resume {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+            padding: 2.5rem 3rem;
+        }
+
+        /* ===== HEADER ===== */
+        .r-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #1a3a5c;
+        }
+
+        .r-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1a3a5c;
+            text-transform: uppercase;
+        }
+
+        .r-links {
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.3rem 1.5rem;
+            font-size: 12.5px;
+            color: #444;
+        }
+
+        .r-links a {
+            color: #1a3a5c;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .r-links a:hover { text-decoration: underline; }
+
+        .r-links span {
+            color: #999;
+        }
+
+        /* ===== SECTION ===== */
+        .r-section {
+            margin-bottom: 1rem;
+        }
+
+        .r-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1a3a5c;
+            border-bottom: 1.5px solid #1a3a5c;
+            padding-bottom: 3px;
+            margin-bottom: 0.6rem;
+        }
+
+        /* ===== EDUCATION / EXPERIENCE ROW ===== */
+        .r-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .r-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .r-item-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #111;
+        }
+
+        .r-item-date {
+            font-size: 13px;
+            color: #555;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .r-item-sub {
+            font-size: 13px;
+            color: #333;
+            font-style: italic;
+            margin-top: 1px;
+        }
+
+        .r-item ul {
+            list-style: disc;
+            padding-left: 1.4rem;
+            margin-top: 4px;
+        }
+
+        .r-item ul li {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .skills-table tr td {
+            padding: 2px 6px 2px 0;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .skills-table td:first-child {
+            font-weight: 700;
+            white-space: nowrap;
+            width: 140px;
+            color: #111;
+        }
+
+        .skills-table td:last-child {
+            color: #333;
+        }
+
+        /* ===== PROJECTS ===== */
+        .r-project {
+            margin-bottom: 0.7rem;
+        }
+
+        .r-project-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #111;
+        }
+
+        .r-project-name a {
+            font-weight: 400;
+            font-size: 12px;
+            color: #1a3a5c;
+            text-decoration: none;
+            margin-left: 6px;
+        }
+        .r-project-name a:hover { text-decoration: underline; }
+
+        .r-project-tools {
+            font-size: 12.5px;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 2px;
+        }
+
+        .r-project ul {
+            list-style: disc;
+            padding-left: 1.4rem;
+        }
+
+        .r-project ul li {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        @page {
+            margin: 0.4cm;
+            size: A4;
+        }
+
+        @media print {
+            body { background: #fff; padding: 0.5cm; }
+            .toolbar { display: none; }
+            .resume { box-shadow: none; margin: 0; max-width: 100%; padding: 1.5rem 2rem; }
+        }
+
+        @media (max-width: 600px) {
+            .resume { padding: 1.5rem; }
+            .r-item-top { flex-direction: column; }
+            .skills-table td:first-child { width: 110px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar">
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    <button onclick="window.print()" class="print-btn"><i class="fas fa-file-pdf"></i> Download PDF</button>
+</div>
+
+<!-- Resume -->
+<div class="resume">
+
+    <!-- Header -->
+    <div class="r-header">
+        <h1>Hamid Raza</h1>
+        <div class="r-links">
+            <a href="mailto:hamidraza71450@gmail.com"><i class="fas fa-envelope"></i> hamidraza71450@gmail.com</a>
+            <span>|</span>
+            <a href="https://www.linkedin.com/in/hamid-raza-data-scientist" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/hamid-raza-data-scientist</a>
+            <span>|</span>
+            <a href="https://github.com/hamidraza6" target="_blank"><i class="fab fa-github"></i> github.com/hamidraza6</a>
+            <span>|</span>
+            <a href="https://www.kaggle.com/raza163" target="_blank"><i class="fab fa-kaggle"></i> kaggle.com/raza163</a>
+            <span>|</span>
+            <span><i class="fas fa-map-marker-alt"></i> Nawabshah, Sindh, Pakistan</span>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="r-section">
+        <div class="r-section-title">Education</div>
+        <div class="r-item">
+            <div class="r-item-top">
+                <div class="r-item-title">Quaid-e-Awam University of Engineering Science and Technology (QUEST)</div>
+                <div class="r-item-date">2024 – 2028</div>
+            </div>
+            <div class="r-item-sub">BS Artificial Intelligence &nbsp;—&nbsp; Nawabshah, Sindh, Pakistan</div>
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="r-section">
+        <div class="r-section-title">Freelance Services</div>
+        <div class="r-item">
+            <div class="r-item-top">
+                <div class="r-item-title">Data Analyst — Fiverr</div>
+                <div class="r-item-date">2026 – Present</div>
+            </div>
+            <div class="r-item-sub">Freelance · Remote</div>
+            <ul>
+                <li>Created a Fiverr profile offering data analysis, dashboard creation, and data cleaning services.</li>
+                <li>Currently seeking first clients to apply skills in Python, Power BI, and data visualization on real-world projects.</li>
+                <li>Actively building portfolio projects to demonstrate capabilities to potential clients.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="r-section">
+        <div class="r-section-title">Projects</div>
+
+        <div class="r-project">
+            <div class="r-project-name">Product Sales Dashboard 2026 <a href="https://github.com/hamidraza6/Product-Sales-Dashboard-2026" target="_blank">| GitHub ↗</a></div>
+            <div class="r-project-tools">Power BI · Excel · Data Visualization</div>
+            <ul>
+                <li>Designed a dashboard to analyze product-level sales trends, revenue tracking, and performance KPIs.</li>
+            </ul>
+        </div>
+
+        <div class="r-project">
+            <div class="r-project-name">Retail Sales Performance Dashboard <a href="https://github.com/hamidraza6/Retail-Sales-Performance-Dashboard." target="_blank">| GitHub ↗</a></div>
+            <div class="r-project-tools">Power BI · SQL · Data Analysis</div>
+            <ul>
+                <li>Built a dynamic retail analytics dashboard providing insights into store performance and product trends.</li>
+            </ul>
+        </div>
+
+        <div class="r-project">
+            <div class="r-project-name">Bank Performance Dashboard <a href="https://github.com/hamidraza6/Bank-Performance-Dashborad" target="_blank">| GitHub ↗</a></div>
+            <div class="r-project-tools">Power BI · SQL · Data Analysis</div>
+            <ul>
+                <li>Visualized banking KPIs, branch analytics, and customer metrics to assess financial health.</li>
+            </ul>
+        </div>
+
+        <div class="r-project">
+            <div class="r-project-name">Bank Queue Management System <a href="https://github.com/hamidraza6/Bank-Queue-Management-System" target="_blank">| GitHub ↗</a></div>
+            <div class="r-project-tools">Python · Data Structures · Algorithms</div>
+            <ul>
+                <li>Developed a Python-based queue management system to reduce customer wait times in banking environments.</li>
+            </ul>
+        </div>
+
+        <div class="r-project">
+            <div class="r-project-name">Multi-page Book Scraper <a href="https://github.com/hamidraza6/Multi-page-book-scraper" target="_blank">| GitHub ↗</a></div>
+            <div class="r-project-tools">Python · BeautifulSoup · Requests · Pandas</div>
+            <ul>
+                <li>Automated multi-page web scraping to extract and compile structured book data into a clean dataset.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="r-section">
+        <div class="r-section-title">Technical Skills</div>
+        <table class="skills-table">
+            <tr>
+                <td>Languages:</td>
+                <td>Python <em>(Advanced)</em>, SQL <em>(Intermediate)</em>, Java <em>(Beginner)</em></td>
+            </tr>
+            <tr>
+                <td>Libraries:</td>
+                <td>NumPy <em>(Advanced)</em>, Pandas <em>(Advanced)</em>, Matplotlib <em>(Intermediate)</em>, Seaborn <em>(Intermediate)</em>, Scikit-Learn <em>(Intermediate)</em></td>
+            </tr>
+            <tr>
+                <td>Data Skills:</td>
+                <td>Data Collection <em>(Advanced)</em>, Data Cleaning <em>(Advanced)</em>, EDA <em>(Advanced)</em>, Feature Engineering <em>(Intermediate)</em>, Data Visualization <em>(Advanced)</em></td>
+            </tr>
+            <tr>
+                <td>Tools &amp; BI:</td>
+                <td>Power BI <em>(Intermediate)</em>, Excel <em>(Intermediate)</em>, VS Code <em>(Advanced)</em>, Google Colab <em>(Advanced)</em>, Machine Learning <em>(Intermediate)</em></td>
+            </tr>
+        </table>
+    </div>
+
+</div><!-- end resume -->
+
+</body>
+</html>
